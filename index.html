@@ -8,7 +8,7 @@
     <title>Cameron Pittman: Portfolio</title>
 
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
 
     <!-- Inline css -->
     <style>
@@ -23,6 +23,14 @@
       body, button, input, select, textarea { font-family: 'Open Sans', sans-serif; color: #333; }
 
       a { color: #1021CC; }
+      a:visited { color: #61C; }
+      a:focus { outline: thin dotted; }
+      a:hover, a:active { color: #c00; outline: 0; }
+
+      b, strong { font-weight: bold; }
+      pre, code { font-family: monospace, monospace; font-size: 1em; }
+      ul, ol { margin: 1em 0; padding: 0 0 0 20px; }
+      img { border: 0; max-width: 100%; }
 
       body { background: #fff; }
       header, footer, .container { max-width: 45em; margin: 0 auto; }
@@ -52,6 +60,17 @@
       @media only screen and (max-width: 480px) {
         body { font-size: 12px;}
         header p { padding-left: 4.5em;}
+      }
+      /* Printing */
+      @media print {
+        * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+        a, a:visited { color: #444 !important; text-decoration: underline; }
+        a[href]:after { content: " (" attr(href) ")"; }
+        tr, img { page-break-inside: avoid; }
+        img { max-width: 100% !important; }
+        @page { margin: 0.5cm; }
+        p, h2, h3 { orphans: 3; widows: 3; }
+        h2, h3{ page-break-after: avoid; }
       }
     </style>
     <!-- <link href="css/style.css" rel="stylesheet"> -->
@@ -112,21 +131,14 @@
         <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
       </footer>
     </div>
-    <noscript id="deferred-styles">
-      <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    </noscript>
+    <!-- Load the web fonts now -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-        var loadDeferredStyles = function() {
-          var addStylesNode = document.getElementById("deferred-styles");
-          var replacement = document.createElement("div");
-          replacement.innerHTML = addStylesNode.textContent;
-          document.body.appendChild(replacement)
-          addStylesNode.parentElement.removeChild(addStylesNode);
-        };
-        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-            webkitRequestAnimationFrame || msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-        else window.addEventListener('load', loadDeferredStyles);
+      WebFont.load({
+        google: {
+          families: ['Droid Sans', 'Droid Serif']
+        }
+      });
     </script>
     </body>
 </html>
