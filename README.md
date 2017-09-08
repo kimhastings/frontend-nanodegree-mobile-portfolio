@@ -1,5 +1,16 @@
 [Open Portfolio](https://kimhastings.github.io/mobile-portfolio/)
 
+## Optimizations
+
+### Avoiding Rendering Blocking CSS
+
+Inlined styles.css
+Used Webfont Loader to load Google fonts
+
+### Optimize images
+
+Optimized all images, but especially pizzeria.jpg which was huge
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
