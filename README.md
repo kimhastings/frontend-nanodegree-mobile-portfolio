@@ -7,6 +7,7 @@ To view the optimized portfolio, click [here](https://kimhastings.github.io/mobi
 ### Avoid Render Blocking CSS
 
 Inlined styles.css in index.html
+
 Used Webfont Loader to load Google fonts
 
 ### Optimize images
