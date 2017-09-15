@@ -20,7 +20,7 @@ Deleted unnecessary function determineDx()
 
 Pizza slider improved by eliminating layout thrashing
 
-#### Old:
+Before:
 
 ```
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
@@ -29,7 +29,7 @@ Pizza slider improved by eliminating layout thrashing
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
 ```
 
-#### New:
+After:
 
 ```
     // Get the pizza elements
@@ -43,7 +43,7 @@ Pizza slider improved by eliminating layout thrashing
 
 Sliding background pizzas improved by eliminating layout thrashing
 
-#### Old:
+Before:
 
 ```
   var items = document.querySelectorAll('.mover');
@@ -53,7 +53,7 @@ Sliding background pizzas improved by eliminating layout thrashing
   }
 ```
 
-#### New:
+After:
 
 ```
   // Get the background pizza elements
