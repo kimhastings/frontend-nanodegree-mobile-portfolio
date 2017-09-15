@@ -16,7 +16,7 @@ Optimized all images, but especially pizzeria.jpg which was huge
 
 ### Computational Efficiency
 
-Deleted unnecessary function determineDx()
+Deleted unnecessary function determineDx() from views/js/main.js
 
 Pizza slider improved by eliminating layout thrashing
 
