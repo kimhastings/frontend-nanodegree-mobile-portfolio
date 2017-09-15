@@ -398,7 +398,18 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
-// resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
+// More efficient way to traverse DOM than calling querySelectorAll over and over
+function getDomNodeArray(selector) {
+  // get the elements as a DOM collection
+  var elemCollection = document.querySelectorAll(selector);
+
+  // coerce the DOM collection into an array
+  var elemArray = Array.prototype.slice.apply(elemCollection);
+
+  return elemArray;
+};
+
+  // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
@@ -420,18 +431,7 @@ var resizePizzas = function(size) {
   }
 
   changeSliderLabel(size);
-  
-  // More efficient than calling querySelectorAll over and over
-  function getDomNodeArray(selector) {
-    // get the elements as a DOM collection
-    var elemCollection = document.querySelectorAll(selector);
-  
-    // coerce the DOM collection into an array
-    var elemArray = Array.prototype.slice.apply(elemCollection);
-  
-    return elemArray;
-  };
-  
+    
   function changePizzaSizes(size) {
 
     // Percent of width for each size
@@ -503,13 +503,16 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+  // Get the background pizza elements
+  var divs = getDomNodeArray('.mover');
 
-  // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Iterate through background pizza elements on the page and change their positions
+  divs.forEach(function(element,index) {
+    var phase = Math.sin((document.body.scrollTop / 1250) + (index % 5));
+    element.style.left = element.basicLeft + 100 * phase + 'px';
+  }, this); 
+
+    // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
   window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
