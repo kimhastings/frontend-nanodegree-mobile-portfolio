@@ -1,6 +1,14 @@
 # Website Performance Optimization portfolio project
 
-To view the optimized portfolio, click [here](https://kimhastings.github.io/mobile-portfolio/)
+To view the optimized portfolio online, click [here](https://kimhastings.github.io/mobile-portfolio/)
+
+If you would like to view the portfolio locally on your computer:
+
+* Click [here](https://github.com/kimhastings/mobile-portfolio) to open the repository where the code is stored
+* Click on the green "Clone or download" button in the upper right corner of the page
+* Click on "Download ZIP"
+* Save the zip file on your computer and then unzip it
+* Open the unzipped folder called "mobile-portfolio-master" and click on index.html to open the portfolio
 
 ## Optimizations Made
 

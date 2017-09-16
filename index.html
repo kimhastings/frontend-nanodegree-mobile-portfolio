@@ -258,15 +258,19 @@
             <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
         </footer>
     </div>
-    <!-- Load the web fonts now -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <!-- Load the web fonts asynchronously -->
     <script>
-        WebFont.load({
-            google: {
-                families: ['Open Sans:400,700']
-            }
-        });
-    </script>
+        WebFontConfig = {
+           google: { families: 'Open Sans:400,700' }
+        };
+     
+        (function(d) {
+           var wf = d.createElement('script'), s = d.scripts[0];
+           wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+           wf.async = true;
+           s.parentNode.insertBefore(wf, s);
+        })(document);
+     </script>
 </body>
 
 </html>
