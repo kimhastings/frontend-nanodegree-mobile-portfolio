@@ -16,7 +16,7 @@ If you would like to view the portfolio locally on your computer:
 
 Inlined styles.css in index.html
 
-Used Webfont Loader to load Google fonts
+Used Webfont Loader to load Google fonts aynchronously
 
 ### Optimize images
 
@@ -25,6 +25,26 @@ Optimized all images, but especially pizzeria.jpg which was huge
 ### Computational Efficiency
 
 Deleted unnecessary function determineDx() from views/js/main.js
+
+Moved getElementById assignment outside of loop that creates the pizzas
+
+Before:
+
+```
+for (var i = 2; i < 100; i++) {
+    var pizzasDiv = document.getElementById("randomPizzas");
+    pizzasDiv.appendChild(pizzaElementGenerator(i));
+}
+```
+
+After:
+
+```
+var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 2; i < 100; i++) {
+    pizzasDiv.appendChild(pizzaElementGenerator(i));
+}
+```
 
 Pizza slider improved by eliminating layout thrashing
 
@@ -49,7 +69,7 @@ After:
     }, this); 
 ```
 
-Sliding background pizzas improved by eliminating layout thrashing
+Sliding background pizzas improved by dynamically calculating the optimum number of pizzas, and by eliminating layout thrashing
 
 Before:
 
@@ -68,9 +88,10 @@ After:
   var divs = getDomNodeArray('.mover');
 
   // Iterate through background pizza elements on the page and change their positions
-  divs.forEach(function(element,index) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (index % 5));
-    element.style.left = element.basicLeft + 100 * phase + 'px';
-  }, this); 
+    var scrollTop = document.body.scrollTop;
+    divs.forEach(function(element, index) {
+        var phase = Math.sin((scrollTop / 1250) + (index % 5));
+        element.style.left = element.basicLeft + 100 * phase + 'px';
+    }, this);
 ```
 
